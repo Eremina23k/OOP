@@ -1,0 +1,395 @@
+body, .app {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: url('/sea.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  font-size: 2.5em;
+  background: linear-gradient(90deg, #217dbb 0%, #64b5f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(33, 125, 187, 0.2);
+  letter-spacing: 2px;
+  font-weight: 700;
+  transition: text-shadow 0.3s;
+}
+
+.header h1:hover {
+  text-shadow: 0 4px 8px rgba(33, 125, 187, 0.3);
+}
+
+.mode-selector {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+.mode-selector h2 {
+  margin-bottom: 30px;
+  background: linear-gradient(90deg, #217dbb 0%, #64b5f6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(33, 125, 187, 0.2);
+  letter-spacing: 2px;
+  font-weight: 700;
+  transition: text-shadow 0.3s;
+}
+
+.mode-selector h2:hover {
+  text-shadow: 0 4px 8px rgba(33, 125, 187, 0.3);
+}
+
+.mode-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.mode-buttons button {
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: #3498db;
+  color: white;
+  min-width: 200px;
+}
+
+.mode-buttons button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.game-boards {
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.board-container {
+  text-align: center;
+}
+
+.board-container h3 {
+  color: #217dbb;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 2px solid #64b5f6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33, 125, 187, 0.08);
+  padding: 10px 0;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.board {
+  display: inline-block;
+  border: 2px solid #34495e;
+  background-color: #e3f2fd;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #bdc3c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cell:hover {
+  background-color: #d6eaf8;
+}
+
+.cell.empty {
+  background-color: #e3f2fd;
+}
+
+.cell.ship {
+  background-color: #3498db;
+  cursor: pointer;
+  position: relative;
+}
+
+.cell.ship:hover::after {
+  content: '×';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.cell.hit {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.cell.miss {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.cell.destroyed {
+  background-color: #c0392b;
+  color: white;
+}
+
+.score {
+  margin-top: 15px;
+  font-size: 1.2em;
+  color: #217dbb;
+  background-color: #eaf6fb;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  padding: 8px 15px;
+  box-shadow: 0 0 4px #3498db44;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.game-controls {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.game-status {
+  margin-bottom: 20px;
+}
+
+.game-status p {
+  color: #217dbb;
+  background: linear-gradient(90deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 2px solid #64b5f6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(33, 125, 187, 0.08);
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  transition: box-shadow 0.3s, border-color 0.3s;
+  display: inline-block;
+}
+
+.game-over {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.game-over h2 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.scores {
+  margin: 15px 0;
+}
+
+.winner {
+  font-size: 1.2em;
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.buttons button:first-child {
+  background-color: #3498db;
+  color: white;
+}
+
+.buttons button:last-child {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.9;
+}
+
+.ship-placement {
+  text-align: center;
+}
+
+.player-info {
+  margin-bottom: 20px;
+}
+
+.player-info input {
+  padding: 8px 15px;
+  margin: 0 10px;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #eaf6fb;
+  color: #217dbb;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.player-info input:focus {
+  border-color: #217dbb;
+  box-shadow: 0 0 4px #3498db44;
+  outline: none;
+}
+
+.player-info input::placeholder {
+  color: #217dbb;
+  opacity: 0.7;
+}
+
+.ship-selection {
+  margin-bottom: 30px;
+}
+
+.ship-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.ship-buttons button {
+  padding: 8px 15px;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  background-color: white;
+  color: #3498db;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ship-buttons button.selected {
+  background-color: #3498db;
+  color: white;
+}
+
+.ship-buttons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ship-buttons button:not(:disabled):hover {
+  background-color: #2980b9;
+  color: white;
+}
+
+.game-info {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.turn-indicator {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.game-result {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffd700;
+  border: 2px solid #333;
+  border-radius: 5px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.back-button-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.back-button {
+  padding: 8px 15px;
+  border: 1px solid #3498db;
+  border-radius: 4px;
+  background-color: white;
+  color: #3498db;
+  cursor: pointer;
+  font-size: 1em;
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background-color: #2980b9;
+  color: white;
+  box-shadow: none;
+  transform: none;
+}
+
+.ship-placement .controls {
+  margin-top: 32px;
+}
+
+.ship-placement .controls button,
+.ship-placement button:not(.ship-buttons button):not(.back-button) {
+  padding: 10px 20px;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #3498db;
+  color: white;
+  margin: 0 8px 12px 8px;
+  transition: background-color 0.2s;
+}
+
+.ship-placement .controls button:hover,
+.ship-placement button:not(.ship-buttons button):not(.back-button):hover {
+  background-color: #2980b9;
+  
+}
+
